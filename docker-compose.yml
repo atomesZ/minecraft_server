@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+  mc_server:
+    image: itzg/minecraft-server
+    container_name: mc_server
+    ports:
+      - 25565:25565
+    environment:
+      EULA: "TRUE"
+      WORLD: "/world"
+      DIFFICULTY: "hard"
+      OPS: "Neeryu,Shayminifly,Aqualio0,snowatlas"
+      ICON: "https://cdn.drawception.com/drawings/769005/BqMzrFAqbQ.png"
+      SERVER_NAME: "Les potos"
+      OVERRIDE_ICON: "TRUE"
+      MAX_PLAYERS: "8"
+      ONLINE_MODE: "FALSE"
+      MEMORY: "4G"
+      VIEW_DISTANCE: 32
+      ANNOUNCE_PLAYER_ACHIEVEMENTS: "TRUE"
+      ENABLE_COMMAND_BLOCK: "TRUE"
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    volumes:
+      # attach a directory relative to the directory containing this compose file
+      - ./minecraft-data:/data
+      - ./world:/world
+
+  ngrok:
+    image: wernight/ngrok
+    container_name: ngrok_mc_server
+    ports:
+      - 4040:4040
+    environment:
+      NGROK_AUTH: ${NGROK_TOKEN}
+      NGROK_PORT: mc_server:25565
+      NGROK_PROTOCOL: TCP
+      NGROK_REGION: eu
