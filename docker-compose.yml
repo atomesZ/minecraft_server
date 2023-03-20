@@ -10,7 +10,7 @@ services:
       EULA: "TRUE"
       WORLD: "/world"
       DIFFICULTY: "hard"
-      OPS: "Neeryu,Shayminifly,Aqualio0,snowatlas"
+      OPS: "atomesZ,Neeryu,Shayminifly,Aqualio0,snowatlas"
       ICON: "https://cdn.drawception.com/drawings/769005/BqMzrFAqbQ.png"
       SERVER_NAME: "Les potos"
       OVERRIDE_ICON: "TRUE"
